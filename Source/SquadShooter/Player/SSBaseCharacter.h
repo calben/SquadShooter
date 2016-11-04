@@ -2,7 +2,10 @@
 
 #pragma once
 
+#define NAKED UPROPERTY(EditAnywhere, BlueprintReadWrite)
+
 #include "GameFramework/Character.h"
+#include "Components/WidgetComponent.h"
 #include "SSBaseCharacter.generated.h"
 
 UCLASS()
@@ -22,7 +25,47 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
+	
+	NAKED
+		bool bIsSprinting;
 
-	
-	
+	NAKED
+		float MouseSensitivity;
+
+	NAKED
+		bool bIsJumping;
+
+	NAKED
+		bool bIsFalling;
+
+	NAKED
+		bool bIsAiming;
+
+	NAKED
+		bool bFirstPersonActive;
+
+	NAKED
+		bool bThirdPersonActive;
+
+	NAKED
+		float MaxHealth;
+
+	NAKED
+		float CurrentHealth;
+
+	NAKED
+		class UCameraComponent* FirstPersonCameraComponent;
+
+	NAKED
+		class UCameraComponent* ThirdPersonCameraComponent;
+
+	NAKED
+		class UWidgetComponent* HealthWidgetComponent;
+
+	NAKED
+		class USSHealthWidget* HealthWidget;
+
+	NAKED
+		class TSubclassOf<USSHealthWidget> HealthWidgetClass;
+
 };

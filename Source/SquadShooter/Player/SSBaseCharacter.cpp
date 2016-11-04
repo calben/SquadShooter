@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "SquadShooter.h"
+#include "UI/SSHealthWidget.h"
 #include "SSBaseCharacter.h"
 
 
@@ -10,6 +11,17 @@ ASSBaseCharacter::ASSBaseCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FIRSTPERSONCAMERACOMPONENT"));
+	ThirdPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("THIRDPERSONCAMERACOMPONENT"));
+
+	HealthWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("RESPONSEWIDGET"));
+	HealthWidgetComponent->SetupAttachment(FirstPersonCameraComponent);
+	HealthWidgetComponent->bAbsoluteLocation = false;
+	HealthWidgetComponent->bAbsoluteRotation = false;
+	HealthWidgetComponent->bAbsoluteScale = false;
+	HealthWidgetComponent->RelativeLocation = FVector(150.f, 0.f, 0.f);
+	HealthWidgetComponent->RelativeRotation = FRotator(0.f, 180.f, 0.f);
+	HealthWidgetComponent->RelativeScale3D = FVector(0.2f, 0.2f, 0.2f);
 }
 
 // Called when the game starts or when spawned
@@ -17,6 +29,11 @@ void ASSBaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	if (HealthWidgetClass)
+	{
+		HealthWidget = CreateWidget<USSHealthWidget>(GetWorld()->GetFirstPlayerController(), HealthWidgetClass);
+		HealthWidgetComponent->SetWidget(HealthWidget);
+	}
 }
 
 // Called every frame
