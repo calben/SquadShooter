@@ -2,8 +2,6 @@
 
 #pragma once
 
-#define NAKED UPROPERTY(EditAnywhere, BlueprintReadWrite)
-
 #include "GameFramework/Character.h"
 #include "Components/WidgetComponent.h"
 #include "SSBaseCharacter.generated.h"
@@ -26,46 +24,55 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 	
-	NAKED
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bIsSprinting;
 
-	NAKED
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float MouseSensitivity;
 
-	NAKED
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bIsJumping;
 
-	NAKED
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bIsFalling;
 
-	NAKED
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bIsAiming;
 
-	NAKED
-		bool bFirstPersonActive;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bFirstPersonActive = true;
 
-	NAKED
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bThirdPersonActive;
 
-	NAKED
-		float MaxHealth;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float MaxHealth = 25.f;
 
-	NAKED
-		float CurrentHealth;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float CurrentHealth = 25.f;
 
-	NAKED
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float MaxShield = 100.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float CurrentShield = 100.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class UCameraComponent* FirstPersonCameraComponent;
 
-	NAKED
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class USpringArmComponent* ThirdPersonCameraSpringArmComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class UCameraComponent* ThirdPersonCameraComponent;
 
-	NAKED
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class UWidgetComponent* HealthWidgetComponent;
 
-	NAKED
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class USSHealthWidget* HealthWidget;
 
-	NAKED
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class TSubclassOf<USSHealthWidget> HealthWidgetClass;
 
 };

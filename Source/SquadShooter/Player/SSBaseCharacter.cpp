@@ -11,15 +11,17 @@ ASSBaseCharacter::ASSBaseCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FIRSTPERSONCAMERACOMPONENT"));
-	ThirdPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("THIRDPERSONCAMERACOMPONENT"));
+	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCameraComponent"));
+	ThirdPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("ThirdPersonCameraComponent"));
+	ThirdPersonCameraSpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("ThirdPersonCameraSpringArmComponent"));
+	ThirdPersonCameraSpringArmComponent->SetupAttachment(ThirdPersonCameraComponent);
 
-	HealthWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("RESPONSEWIDGET"));
+	HealthWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("ResponseWidget"));
 	HealthWidgetComponent->SetupAttachment(FirstPersonCameraComponent);
 	HealthWidgetComponent->bAbsoluteLocation = false;
 	HealthWidgetComponent->bAbsoluteRotation = false;
 	HealthWidgetComponent->bAbsoluteScale = false;
-	HealthWidgetComponent->RelativeLocation = FVector(150.f, 0.f, 0.f);
+	HealthWidgetComponent->RelativeLocation = FVector(100.f, 50.f, -50.f);
 	HealthWidgetComponent->RelativeRotation = FRotator(0.f, 180.f, 0.f);
 	HealthWidgetComponent->RelativeScale3D = FVector(0.2f, 0.2f, 0.2f);
 }
@@ -33,6 +35,7 @@ void ASSBaseCharacter::BeginPlay()
 	{
 		HealthWidget = CreateWidget<USSHealthWidget>(GetWorld()->GetFirstPlayerController(), HealthWidgetClass);
 		HealthWidgetComponent->SetWidget(HealthWidget);
+		HealthWidget->Character = this;
 	}
 }
 

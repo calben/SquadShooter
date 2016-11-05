@@ -17,7 +17,22 @@ public:
 
 	class ASSBaseCharacter* Character;
 
-	UFUNCTION(BlueprintCallable, Category="UI")
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "UI")
 		float GetHealth();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "UI")
+		FString GetHealthString();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "UI")
+		float GetHealthPercentage();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "UI")
+		float GetShield();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "UI")
+		FString GetShieldString();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "UI")
+		float GetShieldPercentage();
 	
 };
