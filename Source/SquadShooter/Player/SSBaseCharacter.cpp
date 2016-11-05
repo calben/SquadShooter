@@ -13,6 +13,8 @@ ASSBaseCharacter::ASSBaseCharacter()
 
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCameraComponent"));
 	FirstPersonCameraComponent->SetupAttachment(GetMesh());
+	FirstPersonCameraComponent->SetRelativeLocation(FVector(-10.f, 10.f, 160.f));
+	FirstPersonCameraComponent->bUsePawnControlRotation = true;
 	ThirdPersonCameraSpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("ThirdPersonCameraSpringArmComponent"));
 	ThirdPersonCameraSpringArmComponent->SetupAttachment(GetMesh());
 	ThirdPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("ThirdPersonCameraComponent"));
@@ -56,8 +58,8 @@ void ASSBaseCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &ASSBaseCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ASSBaseCharacter::MoveRight);
-	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerYawInput);
-	PlayerInputComponent->BindAxis("LookRight", this, &APawn::AddControllerPitchInput);
+	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
+	PlayerInputComponent->BindAxis("LookRight", this, &APawn::AddControllerYawInput);
 
 }
 
