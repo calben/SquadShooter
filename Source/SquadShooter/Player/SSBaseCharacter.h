@@ -58,6 +58,9 @@ public:
 		float CurrentShield = 100.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bLimitRotation;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class UCameraComponent* FirstPersonCameraComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -75,4 +78,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class TSubclassOf<USSHealthWidget> HealthWidgetClass;
 
+	UFUNCTION(BlueprintCallable, Category = "Control")
+		void MoveForward(float Val);
+
+	UFUNCTION(BlueprintCallable, Category = "Control")
+		void MoveRight(float Val);
 };
