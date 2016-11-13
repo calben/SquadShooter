@@ -24,12 +24,9 @@ public:
 		USkeletalMeshComponent* Mesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class ASSBaseCharacter* User;
+		class ASSBaseCharacter* User; //!< User to which the weapon is currently attached
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		int32 BurstCounter;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-
+		int32 BurstCounter; //!< Number of bullets in a burst set
 	
 };
