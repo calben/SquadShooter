@@ -7,6 +7,6 @@ void ASSPlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	OnEquip(DefaultWeapon);
+	OnEquip(DefaultWeapon, FName("BendellWeaponSocket"));
 }
 

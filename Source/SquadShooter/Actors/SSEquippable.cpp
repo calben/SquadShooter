@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "SquadShooter.h"
+#include "Player/SSBaseCharacter.h"
 #include "SSEquippable.h"
 
 
@@ -27,9 +28,10 @@ void ASSEquippable::Tick( float DeltaTime )
 
 }
 
-void ASSEquippable::OnEquip(ASSBaseCharacter* Equipper)
+void ASSEquippable::OnEquip(ASSBaseCharacter* Equipper, FName SocketName)
 {
 	CurrentEquipper = Equipper;
+	Mesh->AttachToComponent(CurrentEquipper->GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, SocketName);
 }
 
 void ASSEquippable::OnBeginEquip()

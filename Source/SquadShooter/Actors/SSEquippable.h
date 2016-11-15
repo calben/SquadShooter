@@ -26,7 +26,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		USkeletalMeshComponent* Mesh; //!< Equippable mesh
 
-	void OnEquip(class ASSBaseCharacter* Equipper);
+	void OnEquip(class ASSBaseCharacter* Equipper, FName SocketName);
 	
 	void OnBeginEquip();
 

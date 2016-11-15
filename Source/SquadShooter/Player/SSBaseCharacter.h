@@ -91,5 +91,5 @@ public:
 		void MoveRight(float Val);
 
 	UFUNCTION(BlueprintCallable, Category = "Character")
-		void OnEquip(TSubclassOf<class ASSEquippable> EquipableClass);
+		void OnEquip(TSubclassOf<class ASSEquippable> EquipableClass, FName SocketName = FName("NAME_None"));
 };

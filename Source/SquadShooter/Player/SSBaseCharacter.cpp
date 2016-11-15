@@ -90,10 +90,10 @@ void ASSBaseCharacter::MoveRight(float Val)
 	}
 }
 
-void ASSBaseCharacter::OnEquip(TSubclassOf<ASSEquippable> EquipableClass)
+void ASSBaseCharacter::OnEquip(TSubclassOf<ASSEquippable> EquipableClass, FName SocketName)
 {
 	FActorSpawnParameters SpawnInfo;
 	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-	ASSEquippable* NewWeapon = GetWorld()->SpawnActor<ASSEquippable>(EquipableClass, FVector(0.f, 0.f, 0.f), FRotator::ZeroRotator, SpawnInfo);
-
+	ASSEquippable* NewEquippable = GetWorld()->SpawnActor<ASSEquippable>(EquipableClass, FVector(0.f, 0.f, 0.f), FRotator::ZeroRotator, SpawnInfo);
+	NewEquippable->OnEquip(this, SocketName);
 }
