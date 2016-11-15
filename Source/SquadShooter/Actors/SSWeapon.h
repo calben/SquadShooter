@@ -22,7 +22,7 @@ public:
 	virtual void Tick( float DeltaSeconds ) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		UArrowComponent MuzzlePoint; //!< Point from which projectiles should spawn
+		UArrowComponent* MuzzlePoint; //!< Point from which projectiles should spawn
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class ASSBaseCharacter* User; //!< User to which the weapon is currently attached
