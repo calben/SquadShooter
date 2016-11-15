@@ -2,6 +2,7 @@
 
 #include "SquadShooter.h"
 #include "UI/SSHealthWidget.h"
+#include "Actors/SSEquippable.h"
 #include "SSBaseCharacter.h"
 
 
@@ -11,9 +12,13 @@ ASSBaseCharacter::ASSBaseCharacter()
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	GetMesh()->SetRelativeLocation(FVector(0.f, 0.f, -87.f));
+	GetMesh()->SetRelativeRotation(FRotator(0.f, -90.f, 0.f));
+
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCameraComponent"));
 	FirstPersonCameraComponent->SetupAttachment(GetMesh());
-	FirstPersonCameraComponent->SetRelativeLocation(FVector(-10.f, 10.f, 160.f));
+	FirstPersonCameraComponent->SetRelativeLocation(FVector(-30.f, 20.f, 150.f));
+	FirstPersonCameraComponent->SetRelativeRotation(FRotator(0.f, 90.f, 0.f));
 	FirstPersonCameraComponent->bUsePawnControlRotation = true;
 	ThirdPersonCameraSpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("ThirdPersonCameraSpringArmComponent"));
 	ThirdPersonCameraSpringArmComponent->SetupAttachment(GetMesh());
@@ -83,4 +88,12 @@ void ASSBaseCharacter::MoveRight(float Val)
 		const FVector Direction = FRotationMatrix(Rotation).GetScaledAxis(EAxis::Y);
 		AddMovementInput(Direction, Val);
 	}
+}
+
+void ASSBaseCharacter::OnEquip(TSubclassOf<ASSEquippable> EquipableClass)
+{
+	FActorSpawnParameters SpawnInfo;
+	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	ASSEquippable* NewWeapon = GetWorld()->SpawnActor<ASSEquippable>(EquipableClass, FVector(0.f, 0.f, 0.f), FRotator::ZeroRotator, SpawnInfo);
+
 }

@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "SquadShooter.h"
+#include "Player/SSBaseCharacter.h"
 #include "SSWeapon.h"
 
 
@@ -10,7 +11,7 @@ ASSWeapon::ASSWeapon()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	Mesh = CreateDefaultSubobject<USkeletalMeshComponent>(this, TEXT("Mesh"));
+	Mesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh"));
 	Mesh->MeshComponentUpdateFlag = EMeshComponentUpdateFlag::OnlyTickPoseWhenRendered;
 	Mesh->bReceivesDecals = true;
 	Mesh->CastShadow = true;
@@ -35,4 +36,3 @@ void ASSWeapon::Tick( float DeltaTime )
 	Super::Tick( DeltaTime );
 
 }
-

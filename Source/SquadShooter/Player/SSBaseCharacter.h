@@ -89,4 +89,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Control")
 		void MoveRight(float Val);
+
+	UFUNCTION(BlueprintCallable, Category = "Character")
+		void OnEquip(TSubclassOf<class ASSEquippable> EquipableClass);
 };

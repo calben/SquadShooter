@@ -3,10 +3,11 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
+#include "Actors/SSEquippable.h"
 #include "SSWeapon.generated.h"
 
 UCLASS()
-class SQUADSHOOTER_API ASSWeapon : public AActor
+class SQUADSHOOTER_API ASSWeapon : public ASSEquippable
 {
 	GENERATED_BODY()
 	
@@ -21,12 +22,12 @@ public:
 	virtual void Tick( float DeltaSeconds ) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		USkeletalMeshComponent* Mesh;
+		UArrowComponent MuzzlePoint; //!< Point from which projectiles should spawn
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class ASSBaseCharacter* User; //!< User to which the weapon is currently attached
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int32 BurstCounter; //!< Number of bullets in a burst set
-	
+
 };
