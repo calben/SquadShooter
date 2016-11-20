@@ -24,7 +24,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float DamageOnHit;
 
-
 	void OnStartUsingPrimary();
 
 	void OnStopUsingPrimary();

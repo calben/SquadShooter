@@ -51,20 +51,16 @@ void ASSWeapon::OnStopUsingPrimary()
 
 void OnStartUsingPrimary()
 {
-	Super::OnStartUsingPrimary();
 }
 
 void OnStopUsingPrimary()
 {
-	Super::OnStopUsingPrimary();
 }
 
 void OnStartUsingSecondary()
 {
-	Super::OnStartUsingSecondary();
 }
 
 void OnStopUsingSecondary()
 {
-	Super::OnStopUsingSecondary();
 }

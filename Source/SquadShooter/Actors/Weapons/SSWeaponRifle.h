@@ -23,6 +23,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = Ammo)
 		bool bInfiniteClip = true;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bIsHitScan;
+
 	UPROPERTY(EditAnywhere, Category = Ammo)
 		int32 MaxAmmo = 120;
 

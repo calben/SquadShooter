@@ -3,7 +3,7 @@
 #include "SquadShooter.h"
 #include "SSWeaponRifle.h"
 
-void Tick(float DeltaSeconds)
+void ASSWeaponRifle::Tick(float DeltaSeconds)
 {
 	if (bIsPrimaryActive)
 	{
@@ -11,13 +11,10 @@ void Tick(float DeltaSeconds)
 	}
 }
 
-void OnStartUsingPrimary()
+void ASSWeaponRifle::OnStartUsingPrimary()
 {
-	Super::OnStartUsingPrimary();
 }
 
-void OnStopUsingPrimary()
+void ASSWeaponRifle::OnStopUsingPrimary()
 {
-	Super::OnStopUsingPrimary();
 }
-

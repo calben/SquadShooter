@@ -88,16 +88,16 @@ public:
 		class TSubclassOf<USSHealthWidget> HealthWidgetClass; //!< Used to define the blueprint UMG widget to use for the health widget
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class ASSEquippable* Equipped;
+		class ASSEquippable* Equipped; //<! Currently equipped equippable
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray<TSubclassOf<class ASSEquippable>> EquippableInventory;
+		TArray<TSubclassOf<class ASSEquippable>> EquippableInventory; //!< Total set of available equippables
 
 	UFUNCTION(BlueprintCallable, Category = "Control")
-		void MoveForward(float Val);
+		void MoveForward(float Val); //!< Define forward (and backward) movement
 
 	UFUNCTION(BlueprintCallable, Category = "Control")
-		void MoveRight(float Val);
+		void MoveRight(float Val); //!< Define left (and right) movement)
 
 	UFUNCTION(BlueprintCallable, Category = "Control")
 		void OnPrimaryActionPressed();
