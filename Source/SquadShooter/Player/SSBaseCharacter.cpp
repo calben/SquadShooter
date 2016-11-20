@@ -68,7 +68,6 @@ void ASSBaseCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 	PlayerInputComponent->BindAxis("MoveRight", this, &ASSBaseCharacter::MoveRight);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("LookRight", this, &APawn::AddControllerYawInput);
-
 }
 
 void ASSBaseCharacter::MoveForward(float Val)
@@ -99,4 +98,16 @@ void ASSBaseCharacter::OnEquip(TSubclassOf<ASSEquippable> EquipableClass, FName 
 	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 	ASSEquippable* NewEquippable = GetWorld()->SpawnActor<ASSEquippable>(EquipableClass, FVector(0.f, 0.f, 0.f), FRotator::ZeroRotator, SpawnInfo);
 	NewEquippable->OnEquip(this, SocketName);
+}
+
+void ASSBaseCharacter::OnPrimaryActionPressed()
+{
+	if(Equipped)
+		Equipped->OnStartUsingPrimary();
+}
+
+void ASSBaseCharacter::OnPrimaryActionReleased()
+{
+	if(Equipped)
+		Equipped->OnStopUsingPrimary();
 }

@@ -8,7 +8,7 @@
 // Sets default values
 ASSEquippable::ASSEquippable()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	Mesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh"));
@@ -18,13 +18,13 @@ ASSEquippable::ASSEquippable()
 void ASSEquippable::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
-void ASSEquippable::Tick( float DeltaTime )
+void ASSEquippable::Tick(float DeltaTime)
 {
-	Super::Tick( DeltaTime );
+	Super::Tick(DeltaTime);
 
 }
 
@@ -47,4 +47,30 @@ void ASSEquippable::OnFinishedEquip()
 void ASSEquippable::OnUnEquip()
 {
 	CurrentEquipper = nullptr;
+}
+
+void ASSEquippable::OnStartUsingPrimary()
+{
+	if (!bIsPrimaryActive)
+	{
+		bIsPrimaryActive = true;
+	}
+}
+
+void ASSEquippable::OnStopUsingPrimary()
+{
+	bIsPrimaryActive = false;
+}
+
+void ASSEquippable::OnStartUsingSecondary()
+{
+	if (!bIsSecondaryActive)
+	{
+		bIsSecondaryActive = true;
+	}
+}
+
+void ASSEquippable::OnStopUsingSecondary()
+{
+	bIsSecondaryActive = false;
 }
