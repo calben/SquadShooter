@@ -87,11 +87,23 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class TSubclassOf<USSHealthWidget> HealthWidgetClass; //!< Used to define the blueprint UMG widget to use for the health widget
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class ASSEquippable* Equipped;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TArray<TSubclassOf<class ASSEquippable>> EquippableInventory;
+
 	UFUNCTION(BlueprintCallable, Category = "Control")
 		void MoveForward(float Val);
 
 	UFUNCTION(BlueprintCallable, Category = "Control")
 		void MoveRight(float Val);
+
+	UFUNCTION(BlueprintCallable, Category = "Control")
+		void OnPrimaryActionPressed();
+
+	UFUNCTION(BlueprintCallable, Category = "Control")
+		void OnPrimaryActionReleased();
 
 	UFUNCTION(BlueprintCallable, Category = "Character")
 		void OnEquip(TSubclassOf<class ASSEquippable> EquipableClass, FName SocketName = FName("NAME_None"));

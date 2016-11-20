@@ -43,4 +43,7 @@ ASSBaseCharacter* ASSSquadSpawnZone::SpawnCharacter(TSubclassOf<class ASSBaseCha
 	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 	ASSBaseCharacter* BaseCharacter = GetWorld()->SpawnActor<ASSBaseCharacter>(SpawnClass, SpawnLocation, SpawnRotation, SpawnInfo);
 	BaseCharacter->SpawnZone = this;
+	BaseCharacter->TeamNumber = this->TeamNumber;
+	BaseCharacter->SquadNumber = this->SquadNumber;
+	return BaseCharacter;
 }

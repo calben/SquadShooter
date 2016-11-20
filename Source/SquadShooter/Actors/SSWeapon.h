@@ -22,12 +22,15 @@ public:
 	virtual void Tick( float DeltaSeconds ) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		UArrowComponent* MuzzlePoint; //!< Point from which projectiles should spawn
+		float DamageOnHit;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		class ASSBaseCharacter* User; //!< User to which the weapon is currently attached
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		int32 BurstCounter; //!< Number of bullets in a burst set
+	void OnStartUsingPrimary();
+
+	void OnStopUsingPrimary();
+
+	void OnStartUsingSecondary();
+
+	void OnStopUsingSecondary();
 
 };

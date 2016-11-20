@@ -35,3 +35,36 @@ void ASSWeapon::Tick( float DeltaTime )
 	Super::Tick( DeltaTime );
 
 }
+
+void ASSWeapon::OnStartUsingPrimary()
+{
+	Super::BeginPlay();
+
+}
+
+void ASSWeapon::OnStopUsingPrimary()
+{
+	Super::BeginPlay();
+
+}
+
+
+void OnStartUsingPrimary()
+{
+	Super::OnStartUsingPrimary();
+}
+
+void OnStopUsingPrimary()
+{
+	Super::OnStopUsingPrimary();
+}
+
+void OnStartUsingSecondary()
+{
+	Super::OnStartUsingSecondary();
+}
+
+void OnStopUsingSecondary()
+{
+	Super::OnStopUsingSecondary();
+}
