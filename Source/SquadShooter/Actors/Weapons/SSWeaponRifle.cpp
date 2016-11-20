@@ -3,6 +3,13 @@
 #include "SquadShooter.h"
 #include "SSWeaponRifle.h"
 
+void Tick(float DeltaSeconds)
+{
+	if (bIsPrimaryActive)
+	{
+		
+	}
+}
 
 void OnStartUsingPrimary()
 {
