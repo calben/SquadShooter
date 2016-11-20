@@ -22,6 +22,8 @@ ASSBaseCharacter::ASSBaseCharacter()
 	FirstPersonCameraComponent->bUsePawnControlRotation = true;
 	ThirdPersonCameraSpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("ThirdPersonCameraSpringArmComponent"));
 	ThirdPersonCameraSpringArmComponent->SetupAttachment(GetMesh());
+	ThirdPersonCameraSpringArmComponent->TargetArmLength = 500.f;
+	ThirdPersonCameraSpringArmComponent->SetRelativeLocation(FVector(0.f, 0.f, 0.f));
 	ThirdPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("ThirdPersonCameraComponent"));
 	ThirdPersonCameraComponent->SetupAttachment(ThirdPersonCameraSpringArmComponent);
 
@@ -47,6 +49,7 @@ void ASSBaseCharacter::BeginPlay()
 		HealthWidgetComponent->SetWidget(HealthWidget);
 		HealthWidget->Character = this;
 	}
+	ThirdPersonCameraComponent->Activate();
 }
 
 // Called every frame

@@ -76,6 +76,9 @@ public:
 		class UCameraComponent* ThirdPersonCameraComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class ASSSquadSpawnZone* SpawnZone;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class UWidgetComponent* HealthWidgetComponent; //!< Widget component that will hold the HealthWidget
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

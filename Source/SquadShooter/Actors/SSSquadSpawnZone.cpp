@@ -9,7 +9,7 @@
 // Sets default values
 ASSSquadSpawnZone::ASSSquadSpawnZone()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
 	Zone = CreateDefaultSubobject<UBoxComponent>(TEXT("Zone"));
@@ -20,13 +20,17 @@ ASSSquadSpawnZone::ASSSquadSpawnZone()
 void ASSSquadSpawnZone::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	for (int i = 0; i < 5; ++i)
+	{
+		SpawnCharacter(DefaultCharacterClass);
+	}
 }
 
 // Called every frame
-void ASSSquadSpawnZone::Tick( float DeltaTime )
+void ASSSquadSpawnZone::Tick(float DeltaTime)
 {
-	Super::Tick( DeltaTime );
+	Super::Tick(DeltaTime);
 	// WILL NOT RUN
 }
 
@@ -37,5 +41,6 @@ ASSBaseCharacter* ASSSquadSpawnZone::SpawnCharacter(TSubclassOf<class ASSBaseCha
 	FRotator SpawnRotation = GetActorRotation();
 	FActorSpawnParameters SpawnInfo;
 	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-	return GetWorld()->SpawnActor<ASSEquippable>(SpawnClass, SpawnLocation, SpawnRotation, SpawnInfo);
+	ASSBaseCharacter* BaseCharacter = GetWorld()->SpawnActor<ASSBaseCharacter>(SpawnClass, SpawnLocation, SpawnRotation, SpawnInfo);
+	BaseCharacter->SpawnZone = this;
 }

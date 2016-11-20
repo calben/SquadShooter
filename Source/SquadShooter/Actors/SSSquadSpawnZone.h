@@ -30,6 +30,12 @@ public:
 		float DefaultSpawnHeight = 100.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bAllowRespawn = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TSubclassOf<class ASSBaseCharacter> DefaultCharacterClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UBoxComponent* Zone;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
