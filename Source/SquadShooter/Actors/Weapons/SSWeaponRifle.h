@@ -44,8 +44,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UArrowComponent* MuzzlePoint;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		class ALaserAimingBead* LaserAimingBead;
+
+	UFUNCTION(BlueprintCallable, Category = Equippable)
 	void OnStartUsingPrimary();
 
+	UFUNCTION(BlueprintCallable, Category = Equippable)
 	void OnStopUsingPrimary();
 
 };

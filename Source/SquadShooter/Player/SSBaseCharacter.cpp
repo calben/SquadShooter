@@ -16,7 +16,6 @@ ASSBaseCharacter::ASSBaseCharacter()
 	GetMesh()->SetRelativeRotation(FRotator(0.f, -90.f, 0.f));
 
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCameraComponent"));
-	FirstPersonCameraComponent->SetupAttachment(GetMesh());
 	FirstPersonCameraComponent->SetRelativeLocation(FVector(-30.f, 20.f, 150.f));
 	FirstPersonCameraComponent->SetRelativeRotation(FRotator(0.f, 90.f, 0.f));
 	FirstPersonCameraComponent->bUsePawnControlRotation = true;
@@ -92,14 +91,6 @@ void ASSBaseCharacter::MoveRight(float Val)
 	}
 }
 
-void ASSBaseCharacter::OnEquip(TSubclassOf<ASSEquippable> EquipableClass, FName SocketName)
-{
-	FActorSpawnParameters SpawnInfo;
-	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-	ASSEquippable* NewEquippable = GetWorld()->SpawnActor<ASSEquippable>(EquipableClass, FVector(0.f, 0.f, 0.f), FRotator::ZeroRotator, SpawnInfo);
-	NewEquippable->OnEquip(this, SocketName);
-}
-
 void ASSBaseCharacter::OnPrimaryActionPressed()
 {
 	if(Equipped)
@@ -110,4 +101,12 @@ void ASSBaseCharacter::OnPrimaryActionReleased()
 {
 	if(Equipped)
 		Equipped->OnStopUsingPrimary();
+}
+
+void ASSBaseCharacter::OnEquip(TSubclassOf<ASSEquippable> EquipableClass, FName SocketName)
+{
+	FActorSpawnParameters SpawnInfo;
+	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	ASSEquippable* NewEquippable = GetWorld()->SpawnActor<ASSEquippable>(EquipableClass, FVector(0.f, 0.f, 0.f), FRotator::ZeroRotator, SpawnInfo);
+	NewEquippable->OnEquip(this, SocketName);
 }

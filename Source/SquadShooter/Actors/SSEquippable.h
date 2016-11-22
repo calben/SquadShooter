@@ -32,20 +32,28 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bIsSecondaryActive = false;
 
-	void OnEquip(class ASSBaseCharacter* Equipper, FName SocketName);
+	UFUNCTION(BlueprintCallable, Category = Equippable)
+		void OnEquip(class ASSBaseCharacter* Equipper, FName SocketName);
 
-	void OnBeginEquip();
+	UFUNCTION(BlueprintCallable, Category = Equippable)
+		void OnBeginEquip();
 
-	void OnFinishedEquip();
+	UFUNCTION(BlueprintCallable, Category = Equippable)
+		void OnFinishedEquip();
 
-	void OnUnEquip();
+	UFUNCTION(BlueprintCallable, Category = Equippable)
+		void OnUnEquip();
 
-	void OnStartUsingPrimary();
+	UFUNCTION(BlueprintCallable, Category = Equippable)
+		void OnStartUsingPrimary();
 
-	void OnStopUsingPrimary();
+	UFUNCTION(BlueprintCallable, Category = Equippable)
+		void OnStopUsingPrimary();
 
-	void OnStartUsingSecondary();
+	UFUNCTION(BlueprintCallable, Category = Equippable)
+		void OnStartUsingSecondary();
 
-	void OnStopUsingSecondary();
+	UFUNCTION(BlueprintCallable, Category = Equippable)
+		void OnStopUsingSecondary();
 
 };
