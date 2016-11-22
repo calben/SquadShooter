@@ -91,6 +91,9 @@ public:
 		class ASSEquippable* Equipped; //<! Currently equipped equippable
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		uint8 CurrentEquippedIndex = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray<TSubclassOf<class ASSEquippable>> EquippableInventory; //!< Total set of available equippables
 
 	UFUNCTION(BlueprintCallable, Category = "Control")
@@ -105,6 +108,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Control")
 		void OnPrimaryActionReleased();
 
-	UFUNCTION(BlueprintCallable, Category = "Character")
+	UFUNCTION(BlueprintCallable, Category = "Inventory")
 		void OnEquip(TSubclassOf<class ASSEquippable> EquipableClass, FName SocketName = FName("NAME_None"));
+
+	UFUNCTION(BlueprintCallable, Category = "Inventory")
+		void OnUnEquip();
+
+	UFUNCTION(BlueprintCallable, Category = "Inventory")
+		void OnEquipNextInInventory();
 };

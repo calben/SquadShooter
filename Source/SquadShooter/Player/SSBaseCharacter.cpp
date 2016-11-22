@@ -23,6 +23,7 @@ ASSBaseCharacter::ASSBaseCharacter()
 	ThirdPersonCameraSpringArmComponent->SetupAttachment(GetMesh());
 	ThirdPersonCameraSpringArmComponent->TargetArmLength = 500.f;
 	ThirdPersonCameraSpringArmComponent->SetRelativeLocation(FVector(0.f, 0.f, 0.f));
+	ThirdPersonCameraSpringArmComponent->SetupAttachment(GetMesh());
 	ThirdPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("ThirdPersonCameraComponent"));
 	ThirdPersonCameraComponent->SetupAttachment(ThirdPersonCameraSpringArmComponent);
 
@@ -109,4 +110,17 @@ void ASSBaseCharacter::OnEquip(TSubclassOf<ASSEquippable> EquipableClass, FName 
 	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 	ASSEquippable* NewEquippable = GetWorld()->SpawnActor<ASSEquippable>(EquipableClass, FVector(0.f, 0.f, 0.f), FRotator::ZeroRotator, SpawnInfo);
 	NewEquippable->OnEquip(this, SocketName);
+}
+
+void ASSBaseCharacter::OnUnEquip()
+{
+	Equipped->Destroy();
+	Equipped = nullptr;
+}
+
+void ASSBaseCharacter::OnEquipNextInInventory()
+{
+	OnUnEquip();
+	CurrentEquippedIndex++;
+	OnEquip(EquippableInventory[CurrentEquippedIndex]);
 }
