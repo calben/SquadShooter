@@ -75,6 +75,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class UCameraComponent* ThirdPersonCameraComponent;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Camera)
+		class UArrowComponent* EyesArrow;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class ASSSquadSpawnZone* SpawnZone;
 

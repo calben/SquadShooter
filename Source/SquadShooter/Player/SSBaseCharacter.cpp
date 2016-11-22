@@ -15,15 +15,20 @@ ASSBaseCharacter::ASSBaseCharacter()
 	GetMesh()->SetRelativeLocation(FVector(0.f, 0.f, -87.f));
 	GetMesh()->SetRelativeRotation(FRotator(0.f, -90.f, 0.f));
 
+	GetCharacterMovement()->JumpZVelocity = 600.f;
+	GetCharacterMovement()->AirControl = 0.1f;
+	GetCharacterMovement()->GravityScale = 1.4f;
+
+	ThirdPersonCameraSpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("ThirdPersonCameraSpringArmComponent"));
+	ThirdPersonCameraSpringArmComponent->TargetArmLength = 400.f;
+	ThirdPersonCameraSpringArmComponent->bUsePawnControlRotation = true;
+	ThirdPersonCameraSpringArmComponent->SetupAttachment(RootComponent);
+
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCameraComponent"));
 	FirstPersonCameraComponent->SetRelativeLocation(FVector(-30.f, 20.f, 150.f));
 	FirstPersonCameraComponent->SetRelativeRotation(FRotator(0.f, 90.f, 0.f));
-	FirstPersonCameraComponent->bUsePawnControlRotation = true;
-	ThirdPersonCameraSpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("ThirdPersonCameraSpringArmComponent"));
-	ThirdPersonCameraSpringArmComponent->SetupAttachment(GetMesh());
-	ThirdPersonCameraSpringArmComponent->TargetArmLength = 500.f;
-	ThirdPersonCameraSpringArmComponent->SetRelativeLocation(FVector(0.f, 0.f, 0.f));
-	ThirdPersonCameraSpringArmComponent->SetupAttachment(GetMesh());
+	FirstPersonCameraComponent->SetupAttachment(GetMesh());
+
 	ThirdPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("ThirdPersonCameraComponent"));
 	ThirdPersonCameraComponent->SetupAttachment(ThirdPersonCameraSpringArmComponent);
 
@@ -36,6 +41,10 @@ ASSBaseCharacter::ASSBaseCharacter()
 	HealthWidgetComponent->RelativeRotation = FRotator(0.f, 15.f, -160.f);
 	HealthWidgetComponent->RelativeScale3D = FVector(0.03f, 0.03f, 0.03f);
 	HealthWidgetComponent->SetDrawSize(FVector2D(600.f, 300.f));
+
+	EyesArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("EyesArrow"));
+	EyesArrow->SetupAttachment(RootComponent);
+	EyesArrow->SetRelativeLocation(FVector::FVector(0.0f, 0.0f, 50.0f));
 }
 
 // Called when the game starts or when spawned
