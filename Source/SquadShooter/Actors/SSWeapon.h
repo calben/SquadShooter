@@ -24,12 +24,4 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float DamageOnHit;
 
-	void OnStartUsingPrimary();
-
-	void OnStopUsingPrimary();
-
-	void OnStartUsingSecondary();
-
-	void OnStopUsingSecondary();
-
 };

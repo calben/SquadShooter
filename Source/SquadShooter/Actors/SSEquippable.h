@@ -44,16 +44,16 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Equippable)
 		void OnUnEquip();
 
-	UFUNCTION(BlueprintCallable, Category = Equippable)
+	UFUNCTION(BlueprintNativeEvent, Category = Equippable)
 		void OnStartUsingPrimary();
 
-	UFUNCTION(BlueprintCallable, Category = Equippable)
+	UFUNCTION(BlueprintNativeEvent, Category = Equippable)
 		void OnStopUsingPrimary();
 
-	UFUNCTION(BlueprintCallable, Category = Equippable)
+	UFUNCTION(BlueprintNativeEvent, Category = Equippable)
 		void OnStartUsingSecondary();
 
-	UFUNCTION(BlueprintCallable, Category = Equippable)
+	UFUNCTION(BlueprintNativeEvent, Category = Equippable)
 		void OnStopUsingSecondary();
 
 };

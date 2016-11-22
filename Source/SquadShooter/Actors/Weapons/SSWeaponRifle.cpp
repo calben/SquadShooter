@@ -10,11 +10,3 @@ void ASSWeaponRifle::Tick(float DeltaSeconds)
 		
 	}
 }
-
-void ASSWeaponRifle::OnStartUsingPrimary()
-{
-}
-
-void ASSWeaponRifle::OnStopUsingPrimary()
-{
-}

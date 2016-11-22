@@ -49,20 +49,21 @@ void ASSEquippable::OnUnEquip()
 	CurrentEquipper = nullptr;
 }
 
-void ASSEquippable::OnStartUsingPrimary()
+void ASSEquippable::OnStartUsingPrimary_Implementation()
 {
+	UE_LOG(LogTemp, Warning, TEXT("LOGGED FROM CPP"));
 	if (!bIsPrimaryActive)
 	{
 		bIsPrimaryActive = true;
 	}
 }
 
-void ASSEquippable::OnStopUsingPrimary()
+void ASSEquippable::OnStopUsingPrimary_Implementation()
 {
 	bIsPrimaryActive = false;
 }
 
-void ASSEquippable::OnStartUsingSecondary()
+void ASSEquippable::OnStartUsingSecondary_Implementation()
 {
 	if (!bIsSecondaryActive)
 	{
@@ -70,7 +71,7 @@ void ASSEquippable::OnStartUsingSecondary()
 	}
 }
 
-void ASSEquippable::OnStopUsingSecondary()
+void ASSEquippable::OnStopUsingSecondary_Implementation()
 {
 	bIsSecondaryActive = false;
 }

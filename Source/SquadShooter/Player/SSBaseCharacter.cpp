@@ -103,6 +103,7 @@ void ASSBaseCharacter::MoveRight(float Val)
 
 void ASSBaseCharacter::OnPrimaryActionPressed()
 {
+	UE_LOG(LogTemp, Warning, TEXT("PRESSING PRIMARY"));
 	if(Equipped)
 		Equipped->OnStartUsingPrimary();
 }
@@ -118,6 +119,7 @@ void ASSBaseCharacter::OnEquip(TSubclassOf<ASSEquippable> EquipableClass, FName 
 	FActorSpawnParameters SpawnInfo;
 	SpawnInfo.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 	ASSEquippable* NewEquippable = GetWorld()->SpawnActor<ASSEquippable>(EquipableClass, FVector(0.f, 0.f, 0.f), FRotator::ZeroRotator, SpawnInfo);
+	Equipped = NewEquippable;
 	NewEquippable->OnEquip(this, SocketName);
 }
 

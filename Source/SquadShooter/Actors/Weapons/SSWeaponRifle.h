@@ -6,7 +6,7 @@
 #include "SSWeaponRifle.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class SQUADSHOOTER_API ASSWeaponRifle : public ASSWeapon
@@ -46,11 +46,5 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		class ALaserAimingBead* LaserAimingBead;
-
-	UFUNCTION(BlueprintCallable, Category = Equippable)
-	void OnStartUsingPrimary();
-
-	UFUNCTION(BlueprintCallable, Category = Equippable)
-	void OnStopUsingPrimary();
 
 };
